@@ -161,13 +161,13 @@ public class MainActivity extends AppCompatActivity
     public void doSomething(String msg){
 
         System.out.println(msg);
-        AlunosFragment autorFragment = (AlunosFragment) fragmentManager.findFragmentByTag("alunos");
+        AutoresFragment autorFragment = (AutoresFragment) fragmentManager.findFragmentByTag("autores");
 
         if (autorFragment == null){
-            autorFragment =  new AlunosFragment();
+            autorFragment =  new AutoresFragment();
         }
         autorFragment.setText(msg);
-        replaceFragment(autorFragment, "alunos");
+        replaceFragment(autorFragment, "autores");
 
 
 

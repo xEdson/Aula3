@@ -24,6 +24,12 @@
             android:text=" Nome: Edson Nascimento
      RA: 196208 Tenho 25 Anos e atualmente faço estágio numa empresa em Campinas chamada Sensedia mas  ja trabalhei durante 5 anos numa Usina.Gosto de musica(Toco trompete numa orquestra) , jogos em geral(PC, console e mobile) gosto de conversar, dar risada, ser extrovertido e de desafios(tantos pessoais como profissionais)" />
 
+        <TextView
+            android:id="@+id/lblmessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="[Assunto do email]"
+            />
     </LinearLayout>
 
 
@@ -44,6 +50,7 @@
             android:layout_height="wrap_content"
             android:text="Meu nome é Gislaine,
 RA 173381, sou sagitariana, tenho 21 anos e  sou natural de Cosmópolis. Cursei técnico em informática no COTIL(2013-2015), e por me identificar com a área escolhi o curso de TADS. Atualmente trabalho como Analista de Testes numa empresa que desenvolve software para farmácias. Gosto de tocar violão, assistir séries, ouvir música, jogar e cantar." />
+
 
     </LinearLayout>
 
