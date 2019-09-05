@@ -1,15 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
     tools:context=".AutoresFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/lblmessage"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_autores_fragment" />
+        android:orientation="vertical">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/perfilEdson"
+            android:layout_width="190dp"
+            android:layout_height="226dp"
+            android:background="@drawable/perfil" />
+
+        <TextView
+            android:id="@+id/bioEdson"
+            android:layout_width="match_parent"
+            android:layout_height="236dp"
+            android:text=" Nome: Edson Nascimento
+     RA: 196208 Tenho 25 Anos e atualmente faço estágio numa empresa em Campinas chamada Sensedia mas  ja trabalhei durante 5 anos numa Usina.Gosto de musica(Toco trompete numa orquestra) , jogos em geral(PC, console e mobile) gosto de conversar, dar risada, ser extrovertido e de desafios(tantos pessoais como profissionais)" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/perfilGislaine"
+            android:layout_width="190dp"
+            android:layout_height="226dp"
+            android:background="@drawable/gihperfil" />
+
+        <TextView
+            android:id="@+id/bioGislaine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meu nome é Gislaine,
+RA 173381, sou sagitariana, tenho 21 anos e  sou natural de Cosmópolis. Cursei técnico em informática no COTIL(2013-2015), e por me identificar com a área escolhi o curso de TADS. Atualmente trabalho como Analista de Testes numa empresa que desenvolve software para farmácias. Gosto de tocar violão, assistir séries, ouvir música, jogar e cantar." />
+
+    </LinearLayout>
+
+
+</LinearLayout>

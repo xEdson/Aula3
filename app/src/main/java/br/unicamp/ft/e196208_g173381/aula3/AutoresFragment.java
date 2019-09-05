@@ -32,18 +32,9 @@ public class AutoresFragment extends Fragment {
             view = inflater.inflate(R.layout.fragment_autores, container, false);
         }
 
-        textView = view.findViewById(R.id.lblmessage);
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        textView.setText(mensagem);
-    }
 
-    public void setText(String msg) {
-        this.mensagem = msg;
-    }
 
 }

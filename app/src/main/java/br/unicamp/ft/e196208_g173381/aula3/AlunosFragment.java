@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -14,6 +15,9 @@ import android.view.ViewGroup;
 public class AlunosFragment extends Fragment {
 
     private View view;
+    private String mensagem;
+    private TextView textView;
+
 
 
     public AlunosFragment() {
@@ -29,7 +33,20 @@ public class AlunosFragment extends Fragment {
             view = inflater.inflate(R.layout.fragment_alunos, container, false);
         }
 
+        textView = view.findViewById(R.id.lblmessage);
+
+
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        textView.setText(mensagem);
+    }
+
+    public void setText(String msg) {
+        this.mensagem = msg;
     }
 
 }
