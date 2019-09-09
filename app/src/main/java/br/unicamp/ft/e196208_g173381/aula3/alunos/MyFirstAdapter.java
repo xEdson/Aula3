@@ -15,6 +15,7 @@ import br.unicamp.ft.e196208_g173381.aula3.R;
 public class MyFirstAdapter extends RecyclerView.Adapter {
 
     private ArrayList<Aluno> alunos;
+    private  MyOnItemClickListener myOnItemClickListener;
 
 
     public MyFirstAdapter(ArrayList arrayListAluno) {
@@ -26,9 +27,21 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_layout, viewGroup, false);
+        final View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_layout, viewGroup, false);
 
-        MyFirstNewHolder holder = new MyFirstNewHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (myOnItemClickListener!= null){
+                    TextView txt = view.findViewById(R.id.txtviewNome);
+                    myOnItemClickListener.onMyItemClick(
+                            txt.getText().toString()
+                    );
+                }
+            }
+        });
+
+        final MyFirstNewHolder holder = new MyFirstNewHolder(view);
 
         return holder;
     }
@@ -61,11 +74,21 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
 
         public void onBind(Aluno aluno) {
             nome.setText(aluno.getNome());
-            imagem.setImageAlpha(aluno.getFoto());
+            imagem.setImageResource(aluno.getFoto());
             descricao.setText(aluno.getDescricao());
 
 
+
+
         }
+    }
+
+    public interface MyOnItemClickListener{
+        void onMyItemClick(String name);
+    }
+
+    public void  setMyOnItemClickListener(MyOnItemClickListener myOnItemClickListener){
+        this.myOnItemClickListener=myOnItemClickListener;
     }
 }
 
