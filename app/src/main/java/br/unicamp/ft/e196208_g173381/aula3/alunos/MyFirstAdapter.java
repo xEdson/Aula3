@@ -15,31 +15,36 @@ import br.unicamp.ft.e196208_g173381.aula3.R;
 public class MyFirstAdapter extends RecyclerView.Adapter {
 
     private ArrayList<Aluno> alunos;
-    private  MyOnItemClickListener myOnItemClickListener;
-
+    private MyOnItemClickListener myOnItemClickListener;
 
     public MyFirstAdapter(ArrayList arrayListAluno) {
         this.alunos = arrayListAluno;
+    }
 
+    public void removeItem(int position){
+        alunos.remove(position);
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, final int i) {
 
         final View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_layout, viewGroup, false);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (myOnItemClickListener!= null){
+                if (myOnItemClickListener != null) {
                     TextView txt = view.findViewById(R.id.txtviewNome);
                     myOnItemClickListener.onMyItemClick(
                             txt.getText().toString()
                     );
                 }
             }
+
         });
+
+
 
         final MyFirstNewHolder holder = new MyFirstNewHolder(view);
 
@@ -47,10 +52,20 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-        Aluno aluno = alunos.get(i);
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
+        final Aluno aluno = alunos.get(i);
         ((MyFirstNewHolder) viewHolder).onBind(aluno);
 
+       viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+           @Override
+           public boolean onLongClick(View v) {
+               if (myOnItemClickListener != null) {
+                   myOnItemClickListener.deleteAluno(i);
+                   return true;
+               }
+               return true;
+           }
+       });
     }
 
     @Override
@@ -76,19 +91,16 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
             nome.setText(aluno.getNome());
             imagem.setImageResource(aluno.getFoto());
             descricao.setText(aluno.getDescricao());
-
-
-
-
         }
     }
 
-    public interface MyOnItemClickListener{
+    public interface MyOnItemClickListener {
         void onMyItemClick(String name);
+        void deleteAluno(int position);
     }
 
-    public void  setMyOnItemClickListener(MyOnItemClickListener myOnItemClickListener){
-        this.myOnItemClickListener=myOnItemClickListener;
+    public void setMyOnItemClickListener(MyOnItemClickListener myOnItemClickListener) {
+        this.myOnItemClickListener = myOnItemClickListener;
     }
 }
 

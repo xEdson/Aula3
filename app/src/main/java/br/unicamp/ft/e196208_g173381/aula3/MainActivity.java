@@ -170,8 +170,9 @@ public class MainActivity extends AppCompatActivity
         }
         autorFragment.setText(msg);
         replaceFragment(autorFragment, "autores");
+    }
 
-
+    public void deleteAluno(View view){
 
     }
 }
