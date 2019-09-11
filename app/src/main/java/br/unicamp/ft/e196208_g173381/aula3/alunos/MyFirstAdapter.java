@@ -60,7 +60,8 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
            @Override
            public boolean onLongClick(View v) {
                if (myOnItemClickListener != null) {
-                   myOnItemClickListener.deleteAluno(i);
+                   removeItem(i);
+                   notifyDataSetChanged();
                    return true;
                }
                return true;
@@ -96,7 +97,6 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
 
     public interface MyOnItemClickListener {
         void onMyItemClick(String name);
-        void deleteAluno(int position);
     }
 
     public void setMyOnItemClickListener(MyOnItemClickListener myOnItemClickListener) {

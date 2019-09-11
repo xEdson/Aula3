@@ -53,12 +53,6 @@ public class AlunosFragment extends Fragment {
             public void onMyItemClick(String name) {
                 Toast.makeText(getActivity(), name,Toast.LENGTH_SHORT).show();
             }
-
-            @Override
-            public void deleteAluno(int position) {
-                adapter.removeItem(position);
-                mRecyclerView.setAdapter(adapter);
-            }
         });
 
 
