@@ -14,6 +14,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import br.unicamp.ft.e196208_g173381.aula3.MainActivity;
 import br.unicamp.ft.e196208_g173381.aula3.R;
 
 
@@ -52,6 +53,11 @@ public class AlunosFragment extends Fragment {
             @Override
             public void onMyItemClick(String name) {
                 Toast.makeText(getActivity(), name,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onMyItemLongClick(int position) {
+                ((MainActivity) getActivity()).showBiografia(position);
             }
         });
 

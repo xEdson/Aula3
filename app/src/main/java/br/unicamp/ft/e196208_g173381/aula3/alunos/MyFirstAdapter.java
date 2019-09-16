@@ -14,6 +14,10 @@ import br.unicamp.ft.e196208_g173381.aula3.R;
 
 public class MyFirstAdapter extends RecyclerView.Adapter {
 
+    public ArrayList<Aluno> getAlunos() {
+        return alunos;
+    }
+
     private ArrayList<Aluno> alunos;
     private MyOnItemClickListener myOnItemClickListener;
 
@@ -60,8 +64,8 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
            @Override
            public boolean onLongClick(View v) {
                if (myOnItemClickListener != null) {
-                   removeItem(i);
-                   notifyDataSetChanged();
+                   myOnItemClickListener.onMyItemLongClick(i);
+
                    return true;
                }
                return true;
@@ -97,6 +101,7 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
 
     public interface MyOnItemClickListener {
         void onMyItemClick(String name);
+        void onMyItemLongClick(int position);
     }
 
     public void setMyOnItemClickListener(MyOnItemClickListener myOnItemClickListener) {

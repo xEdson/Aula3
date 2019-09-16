@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BiografiasFragment"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/txtBiografia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imagemBiografia"
+        android:layout_width="match_parent"
+        android:layout_height="298dp" />
+
+
+    <TextView
+        android:id="@+id/txtBiografia2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next" />
+
+    <Button
+        android:id="@+id/btprevious"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Previous" />
+
+</LinearLayout>

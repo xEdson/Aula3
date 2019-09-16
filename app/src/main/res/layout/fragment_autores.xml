@@ -40,7 +40,7 @@
 
         <ImageView
             android:id="@+id/perfilGislaine"
-            android:layout_width="190dp"
+            android:layout_width="match_parent"
             android:layout_height="226dp"
             android:background="@drawable/gihperfil" />
 

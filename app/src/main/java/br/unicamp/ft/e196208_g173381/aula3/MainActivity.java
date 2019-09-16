@@ -17,7 +17,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import br.unicamp.ft.e196208_g173381.aula3.alunos.Aluno;
+import br.unicamp.ft.e196208_g173381.aula3.alunos.Alunos;
 import br.unicamp.ft.e196208_g173381.aula3.alunos.AlunosFragment;
+import br.unicamp.ft.e196208_g173381.aula3.alunos.MyFirstAdapter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -132,6 +138,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_biografias) {
             Toast toast = Toast.makeText(this, "Você! pressionou Biografias", Toast.LENGTH_SHORT);
             toast.show();
+            Fragment biografiasFragment = new BiografiasFragment();
+            replaceFragment(biografiasFragment, "biografias");
 
 
         } else if (id == R.id.jogo1) {
@@ -172,7 +180,19 @@ public class MainActivity extends AppCompatActivity
         replaceFragment(autorFragment, "autores");
     }
 
-    public void deleteAluno(View view){
+    public void showBiografia(int position){
+
+        BiografiasFragment biografiasFragment = (BiografiasFragment) fragmentManager.findFragmentByTag("biografias");
+
+        if(biografiasFragment == null){
+            biografiasFragment = new BiografiasFragment();
+        }
+
+        biografiasFragment.setPosition(position);
+        replaceFragment(biografiasFragment, "biografias");
 
     }
+
+
+
 }
