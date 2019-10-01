@@ -2,12 +2,11 @@ package br.unicamp.ft.e196208_g173381.aula3;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,15 +14,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import br.unicamp.ft.e196208_g173381.aula3.alunos.Aluno;
-import br.unicamp.ft.e196208_g173381.aula3.alunos.Alunos;
 import br.unicamp.ft.e196208_g173381.aula3.alunos.AlunosFragment;
-import br.unicamp.ft.e196208_g173381.aula3.alunos.MyFirstAdapter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -145,6 +139,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.jogo1) {
             Toast toast = Toast.makeText(this, "Você! pressionou jogo 1", Toast.LENGTH_SHORT);
             toast.show();
+            Fragment puzzleFragment = new PuzzleFragment();
+            replaceFragment(puzzleFragment, "puzzle");
 
         } else if (id == R.id.jogo2) {
             Toast toast = Toast.makeText(this, "Você! pressionou jogo 2", Toast.LENGTH_SHORT);
