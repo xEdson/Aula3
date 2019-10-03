@@ -3,7 +3,7 @@ package br.unicamp.ft.e196208_g173381.aula3;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Board{
+public class Board {
 
     public int getNumLines() {
         return numLines;
@@ -75,7 +75,7 @@ public class Board{
 
 
     public void startGame() {
-        Collections.shuffle(this.gameIndex);
+//        Collections.shuffle(this.gameIndex);
     }
 
     public int getCorrectBlock(int line, int column) {
@@ -95,16 +95,9 @@ public class Board{
     public void swap(int line1, int column1, int line2, int column2) {
         int intermediario;
 
-//
-//        for (int i = 0; i < numLines; i++) {
-//            for (int j = 0; j < numColumns; j++) {
-//               if (g)
-//            }
-
-            intermediario = gameIndex.get(line1 * numColumns + column1);
-            gameIndex.set(line1 * numColumns + column1,gameIndex.get(line2 * numColumns + column2));
-            gameIndex.set(line2 * numColumns + column2, intermediario);
-
+        intermediario = gameIndex.get(line1 * numColumns + column1);
+        gameIndex.set(line1 * numColumns + column1, gameIndex.get(line2 * numColumns + column2));
+        gameIndex.set(line2 * numColumns + column2, intermediario);
 
     }
 

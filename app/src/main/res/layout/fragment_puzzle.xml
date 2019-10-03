@@ -7,5 +7,35 @@
     android:orientation="vertical">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Escolha um quadro"/>
+
+    <Spinner
+        android:id="@+id/spinnerId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Spinner>
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/newLinearLayout">
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/reiniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reiniciar"/>
+
+    <TextView
+        android:id="@+id/jogoAcabou"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Escolha um quadro"/>
+
+
+
+
 
 </LinearLayout>

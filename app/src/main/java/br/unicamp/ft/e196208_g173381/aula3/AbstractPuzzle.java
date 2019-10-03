@@ -14,13 +14,13 @@ public abstract class AbstractPuzzle {
         this.board = board;
         this.image = image;
         startGame();
-        readraW();
 
         for (int i = 0; i < board.getNumLines(); i++) {
             for (int j = 0; j < board.getNumColumns(); j++) {
                 addListener(image.get(i*board.getNumColumns()+j),i,j);
             }
         }
+        readraW();
     }
 
 
