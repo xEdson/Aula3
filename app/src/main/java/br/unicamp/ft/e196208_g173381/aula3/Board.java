@@ -75,7 +75,7 @@ public class Board {
 
 
     public void startGame() {
-//        Collections.shuffle(this.gameIndex);
+        Collections.shuffle(this.gameIndex);
     }
 
     public int getCorrectBlock(int line, int column) {
