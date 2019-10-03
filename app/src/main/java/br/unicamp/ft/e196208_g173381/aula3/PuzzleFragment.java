@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class PuzzleFragment extends Fragment {
 
     private LinearLayout view;
+    private AbstractPuzzle abstractPuzzle;
 
 
     public PuzzleFragment() {
@@ -57,7 +58,10 @@ public class PuzzleFragment extends Fragment {
                 ImageView imageView = new ImageView(getContext());
                 imageView.setAdjustViewBounds(true);
                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-                imageView.setImageResource(board.getCorrectBlock(i,j));
+//                imageView.setImageResource(board.getGameBlock(i,j));
+
+
+                System.out.println(i + j);
 
 
                 // Configurando os parametros
@@ -65,12 +69,18 @@ public class PuzzleFragment extends Fragment {
                         new LinearLayout.LayoutParams(
                                 board.getWidth(),
                                 board.getHeight()));
+                imageViews.add(imageView);
                 row.addView(imageView);
 
             }
+
             view.addView(row);
 
+
         }
+        FreeBlockPuzzle freeBlockPuzzle = new FreeBlockPuzzle(board, imageViews);
+
+
     }
 
 }

@@ -1,19 +1,29 @@
 package br.unicamp.ft.e196208_g173381.aula3;
 
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
 public abstract class AbstractPuzzle {
 
-    private Board board;
+     Board board;
+    private ArrayList<ImageView> image;
 
     public AbstractPuzzle(Board board, ArrayList<ImageView> image) {
         this.board = board;
         this.image = image;
+        startGame();
+        readraW();
+
+        for (int i = 0; i < board.getNumLines(); i++) {
+            for (int j = 0; j < board.getNumColumns(); j++) {
+                addListener(image.get(i*board.getNumColumns()+j),i,j);
+            }
+        }
     }
 
-    private ArrayList<ImageView> image;
+
 
 
     public void readraW() {
@@ -26,6 +36,9 @@ public abstract class AbstractPuzzle {
 
     }
 
+    public void startGame(){
+        board.startGame();
+    }
     public abstract void addListener(ImageView imageView, int line, int column);
 
     public abstract boolean endGame();

@@ -3,7 +3,7 @@ package br.unicamp.ft.e196208_g173381.aula3;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Board {
+public class Board{
 
     public int getNumLines() {
         return numLines;
@@ -67,25 +67,44 @@ public class Board {
         this.width = width;
         this.height = height;
         gameIndex = new ArrayList<>();
-        for (int i = 0; i < blocks.size(); i++){
+        for (int i = 0; i < blocks.size(); i++) {
             gameIndex.add(i);
         }
         this.startGame();
     }
 
 
-    public void startGame(){
+    public void startGame() {
         Collections.shuffle(this.gameIndex);
     }
-    public int getCorrectBlock(int line, int column){
 
-        return blocks.get(line*numColumns+column);
+    public int getCorrectBlock(int line, int column) {
+
+        return blocks.get(line * numColumns + column);
 
     }
-    public int getGameBlock(int line, int column){
+
+    public int getGameBlock(int line, int column) {
 
 
-        return gameIndex.get(line*numColumns+column);
+        int i = gameIndex.get(line * numColumns + column);
+        return blocks.get(i);
+
+    }
+
+    public void swap(int line1, int column1, int line2, int column2) {
+        int intermediario;
+
+//
+//        for (int i = 0; i < numLines; i++) {
+//            for (int j = 0; j < numColumns; j++) {
+//               if (g)
+//            }
+
+            intermediario = gameIndex.get(line1 * numColumns + column1);
+            gameIndex.set(line1 * numColumns + column1,gameIndex.get(line2 * numColumns + column2));
+            gameIndex.set(line2 * numColumns + column2, intermediario);
+
 
     }
 
