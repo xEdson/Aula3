@@ -24,6 +24,14 @@
             android:id="@+id/jogo2"
             android:icon="@drawable/ic_menu_manage"
             android:title="Jogo 2" />
+        <item
+            android:id="@+id/newActivity"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Kotlin Activity" />
+        <item
+            android:id="@+id/database"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Database" />
     </group>
 
     <item android:title="Communicate">

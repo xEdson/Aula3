@@ -1,5 +1,6 @@
 package br.unicamp.ft.e196208_g173381.aula3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -18,6 +19,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import br.unicamp.ft.e196208_g173381.aula3.alunos.AlunosFragment;
+import br.unicamp.ft.e196208_g173381.aula3.database.DatabaseFragment;
+import br.unicamp.ft.e196208_g173381.aula3.kotlin.KotlinActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -145,12 +148,30 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.jogo2) {
             Toast toast = Toast.makeText(this, "Você! pressionou jogo 2", Toast.LENGTH_SHORT);
             toast.show();
+            Fragment nameFragment = new NameFragment();
+            replaceFragment(nameFragment, "name");
+
+        }  else if (id == R.id.newActivity) {
+            Toast toast = Toast.makeText(this, "Kotlin Activity", Toast.LENGTH_SHORT);
+            toast.show();
+            Intent intent = new Intent(this,KotlinActivity.class);
+            startActivity(intent);
+
+
+        }else if (id == R.id.database) {
+            Toast toast = Toast.makeText(this, "Clicou no banco", Toast.LENGTH_SHORT);
+            toast.show();
+            Fragment databaseFragment = new DatabaseFragment();
+            replaceFragment(databaseFragment, "database");
+
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 
         }
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
