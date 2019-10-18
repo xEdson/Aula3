@@ -136,7 +136,7 @@ public class DatabaseFragment extends Fragment {
     }
 
     public void onSelecionar() {
-        String sql = "Select * from alunos";
+        String sql = "Select * from tabela";
 
         Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
 

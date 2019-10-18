@@ -56,4 +56,17 @@ public class AlunoBanco {
     public void setErro(int erro) {
         this.erro = erro;
     }
+
+    public void incrementAcerto(){
+        this.acerto++;
+    }
+    public void incrementErro(){
+        this.erro++;
+    }
+    public void incrementTentativaGlobal(){
+        this.tentativaGlobal++;
+    }
+    public void incrementTentativaSelf(){
+        this.tentativaSelf++;
+    }
 }

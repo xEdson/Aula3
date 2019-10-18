@@ -35,6 +35,7 @@ public class NameFragment extends Fragment {
     private int idCorreto;
     private int positionAluno;
     private int numTentativas;
+    private int guess =0;
 
     private ImageView imageView;
     private TextView txtTentativas;
@@ -84,15 +85,30 @@ public class NameFragment extends Fragment {
                 String nomeEscolhido = ((Button) v).getText().toString();
                 if (nomeEscolhido.equals( nomeCorreto) ){
                     txtFeedback.setText("Correto!!");
+                    for (AlunoBanco a : listAlunoBanco){
+                        if (a.getId()==idCorreto){
+                            a.incrementAcerto();
+                            a.incrementTentativaSelf();
+                        }
+                    }
                     new Handler().postDelayed(
                             new Runnable() {
                                 @Override
                                 public void run() {
                                     startGame();
                                 }
-                            }, 2000);
+                            }, 1000);
                 } else {
                     txtFeedback.setText("Incorreto!!");
+                    for (AlunoBanco a : listAlunoBanco){
+                        if (a.getId()==idCorreto){
+                            a.incrementErro();
+                            a.incrementTentativaSelf();
+                        }
+                        if (a.getNome().equals(nomeEscolhido)){
+                            a.incrementTentativaGlobal();
+                        }
+                    }
                     numTentativas--;
                     txtTentativas.setText("Tentativas: " + numTentativas);
 
@@ -141,14 +157,17 @@ public class NameFragment extends Fragment {
     }
 
     public void onStop() {
+        for (AlunoBanco alunoBanco: listAlunoBanco){
+            onAtualizar(alunoBanco);
+        }
         super.onStop();
         sqLiteDatabase.close();
         dbHelper.close();
+
     }
 
-    public void onInserir(ArrayList<AlunoBanco> alunoBancos) {
+    public void onInserir(AlunoBanco alunoBanco) {
 
-        for (AlunoBanco alunoBanco: alunoBancos){
             ContentValues contentValues = new ContentValues();
             contentValues.put("_id", alunoBanco.getId());
             contentValues.put("nome", alunoBanco.getNome());
@@ -158,11 +177,11 @@ public class NameFragment extends Fragment {
             contentValues.put("erro", alunoBanco.getErro());
 
             sqLiteDatabase.insert("alunos", null, contentValues);
-        }
+
     }
 
     private void startGame() {
-        int guess = random.nextInt(Alunos.alunos.length);
+        guess = random.nextInt(Alunos.alunos.length);
         positionAluno = guess;
         Aluno aluno = Alunos.alunos[guess];
         nomeCorreto = aluno.getNome().split(" ")[0].toLowerCase();
@@ -183,16 +202,19 @@ public class NameFragment extends Fragment {
         }
     }
 
-//    public void onAtualizar(int id) {
-//
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put("erro", 2);
-//
-//        String whereClause = "_id = ?";
-//        String[] whereArgs = new String[]{Integer.toString(id)};
-//
-//        sqLiteDatabase.update("tabela", contentValues, whereClause, whereArgs);
-//    }
+    public void onAtualizar(AlunoBanco alunoBanco) {
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("erro", alunoBanco.getErro());
+        contentValues.put("acerto", alunoBanco.getAcerto());
+        contentValues.put("tentativaGlobal", alunoBanco.getTentativaGlobal());
+        contentValues.put("tentativaSelf", alunoBanco.getTentativaSelf());
+
+        String whereClause = "_id = ?";
+        String[] whereArgs = new String[]{Integer.toString(alunoBanco.getId())};
+
+        sqLiteDatabase.update("alunos", contentValues, whereClause, whereArgs);
+    }
 
     public void onSelecionar() {
         String sql = "Select * from alunos";
@@ -200,8 +222,8 @@ public class NameFragment extends Fragment {
         Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
 
         if (cursor.moveToFirst()) {
-            AlunoBanco alunoBanco = new AlunoBanco();
             do {
+                AlunoBanco alunoBanco = new AlunoBanco();
                 alunoBanco.setId(cursor.getInt(0));
                 alunoBanco.setNome(cursor.getString(1));
                 alunoBanco.setAcerto(cursor.getInt(2));
@@ -209,8 +231,8 @@ public class NameFragment extends Fragment {
                 alunoBanco.setTentativaGlobal(cursor.getInt(4));
                 alunoBanco.setTentativaSelf(cursor.getInt(5));
                 listAlunoBanco.add(alunoBanco);
-
             } while (cursor.moveToNext());
+
         }else{
 
             for (Aluno a : listAlunos){
@@ -221,9 +243,9 @@ public class NameFragment extends Fragment {
                 alunoBanco.setErro(0);
                 alunoBanco.setTentativaGlobal(0);
                 alunoBanco.setTentativaSelf(0);
+                onInserir(alunoBanco);
                 listAlunoBanco.add(alunoBanco);
             }
-            onInserir(listAlunoBanco);
         }
         cursor.close();
 
