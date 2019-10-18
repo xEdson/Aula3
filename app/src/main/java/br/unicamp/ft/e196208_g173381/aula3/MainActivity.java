@@ -108,6 +108,20 @@ public class MainActivity extends AppCompatActivity
             replaceFragment(mailFragment, "mail");
             return true;
         }
+        if (id == R.id.action_desempenho) {
+            Toast toast = Toast.makeText(this, "Você! pressionou desempenho", Toast.LENGTH_SHORT);
+            toast.show();
+            Fragment desempenhoFragment = fragmentManager.findFragmentByTag("desempenho");
+
+            if (desempenhoFragment == null) {
+                desempenhoFragment = new DesempenhoFragment();
+            }
+
+
+            replaceFragment(desempenhoFragment, "desempenho");
+            return true;
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

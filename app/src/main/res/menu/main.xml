@@ -11,4 +11,9 @@
         android:orderInCategory="100"
         android:title="@string/contato"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_desempenho"
+        android:orderInCategory="100"
+        android:title="Desempenho"
+        app:showAsAction="never" />
 </menu>

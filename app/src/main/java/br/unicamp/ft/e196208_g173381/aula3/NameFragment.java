@@ -121,7 +121,7 @@ public class NameFragment extends Fragment {
                                     public void run() {
                                         startGame();
                                     }
-                                }, 2000);
+                                }, 1000);
 
 //                        new Handler().postDelayed(
 //                                new Runnable() {
@@ -226,13 +226,12 @@ public class NameFragment extends Fragment {
                 AlunoBanco alunoBanco = new AlunoBanco();
                 alunoBanco.setId(cursor.getInt(0));
                 alunoBanco.setNome(cursor.getString(1));
-                alunoBanco.setAcerto(cursor.getInt(2));
-                alunoBanco.setErro(cursor.getInt(3));
-                alunoBanco.setTentativaGlobal(cursor.getInt(4));
-                alunoBanco.setTentativaSelf(cursor.getInt(5));
+                alunoBanco.setTentativaGlobal(cursor.getInt(2));
+                alunoBanco.setTentativaSelf(cursor.getInt(3));
+                alunoBanco.setAcerto(cursor.getInt(4));
+                alunoBanco.setErro(cursor.getInt(5));
                 listAlunoBanco.add(alunoBanco);
             } while (cursor.moveToNext());
-
         }else{
 
             for (Aluno a : listAlunos){
