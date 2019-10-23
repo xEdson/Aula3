@@ -172,7 +172,7 @@ public class NameFragment extends Fragment {
             contentValues.put("_id", alunoBanco.getId());
             contentValues.put("nome", alunoBanco.getNome());
             contentValues.put("tentativaGlobal", alunoBanco.getTentativaGlobal());
-            contentValues.put("tentativaSelf", alunoBanco.getTentativaSelf());
+            contentValues.put("TentativaSelf", alunoBanco.getTentativaSelf());
             contentValues.put("acerto", alunoBanco.getAcerto());
             contentValues.put("erro", alunoBanco.getErro());
 

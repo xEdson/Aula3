@@ -89,7 +89,12 @@ public class DesempenhoFragment extends Fragment {
         DecimalFormat df = new DecimalFormat("#,###.00");
         pessoaNaoSabeNome.setText("Pessoar que menos sabe o nome é " + nomeErro);
         nomeFazErrar.setText("O nome que mais faz os jogadores errar é: " + nomeErrar);
-        porcentagemErro.setText("Porcentagem de erros: "+(df.format((totalErro*100)/totalTentativa))+"%");
+        if(totalTentativa<=0){
+            porcentagemErro.setText("0");
+        }else{
+            porcentagemErro.setText("Porcentagem de erros: "+(df.format((totalErro*100)/totalTentativa))+"%");
+        }
+
     }
 
     public void onStop() {
@@ -105,7 +110,7 @@ public class DesempenhoFragment extends Fragment {
         contentValues.put("_id", alunoBanco.getId());
         contentValues.put("nome", alunoBanco.getNome());
         contentValues.put("tentativaGlobal", alunoBanco.getTentativaGlobal());
-        contentValues.put("tentativaSelf", alunoBanco.getTentativaSelf());
+        contentValues.put("TentativaSelf", alunoBanco.getTentativaSelf());
         contentValues.put("acerto", alunoBanco.getAcerto());
         contentValues.put("erro", alunoBanco.getErro());
 

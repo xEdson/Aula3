@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import br.unicamp.ft.e196208_g173381.aula3.alunos.AlunosFragment;
 import br.unicamp.ft.e196208_g173381.aula3.database.DatabaseFragment;
+import br.unicamp.ft.e196208_g173381.aula3.internet.InternetFragment;
 import br.unicamp.ft.e196208_g173381.aula3.kotlin.KotlinActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -165,6 +166,12 @@ public class MainActivity extends AppCompatActivity
             Fragment nameFragment = new NameFragment();
             replaceFragment(nameFragment, "name");
 
+        }else if (id == R.id.jogo3) {
+            Toast toast = Toast.makeText(this, "Você! pressionou jogo 3", Toast.LENGTH_SHORT);
+            toast.show();
+            Fragment jogo3Fragment = new Jogo3Fragment();
+            replaceFragment(jogo3Fragment, "jogo3");
+
         }  else if (id == R.id.newActivity) {
             Toast toast = Toast.makeText(this, "Kotlin Activity", Toast.LENGTH_SHORT);
             toast.show();
@@ -177,6 +184,13 @@ public class MainActivity extends AppCompatActivity
             toast.show();
             Fragment databaseFragment = new DatabaseFragment();
             replaceFragment(databaseFragment, "database");
+
+
+        }else if (id == R.id.internet) {
+            Toast toast = Toast.makeText(this, "Clicou no internet", Toast.LENGTH_SHORT);
+            toast.show();
+            Fragment internetFragment = new InternetFragment();
+            replaceFragment(internetFragment, "internet");
 
 
         } else if (id == R.id.nav_share) {

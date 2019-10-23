@@ -8,7 +8,7 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "EXEMPLO";
-    private static final int DB_VERSION = 3;
+    private static final int DB_VERSION = 4;
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -33,9 +33,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        if (oldVersion < 2){
+        if (oldVersion < 5){
             db.execSQL("ALTER TABLE tabela " +
                     "ADD COLUMN texto;");
+
+            db.execSQL("CREATE TABLE alunos " +
+                    "(_id INTEGER PRIMARY KEY, Nome Text, TentativaGlobal INTEGER, TentativaSelf INTEGER, Acerto INTEGER,  Erro INTEGER);");
         }
 
     }
