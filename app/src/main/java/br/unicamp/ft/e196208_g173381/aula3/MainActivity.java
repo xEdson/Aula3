@@ -17,11 +17,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
-import br.unicamp.ft.e196208_g173381.aula3.alunos.AlunosFragment;
-import br.unicamp.ft.e196208_g173381.aula3.database.DatabaseFragment;
 import br.unicamp.ft.e196208_g173381.aula3.internet.InternetFragment;
+import br.unicamp.ft.e196208_g173381.aula3.jogo3.Jogo3Fragment;
+import br.unicamp.ft.e196208_g173381.aula3.jogo3.StatusJogador;
 import br.unicamp.ft.e196208_g173381.aula3.kotlin.KotlinActivity;
+import br.unicamp.ft.e196208_g173381.aula3.alunos.*;
+import br.unicamp.ft.e196208_g173381.aula3.database.*;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -109,8 +110,8 @@ public class MainActivity extends AppCompatActivity
             replaceFragment(mailFragment, "mail");
             return true;
         }
-        if (id == R.id.action_desempenho) {
-            Toast toast = Toast.makeText(this, "Você! pressionou desempenho", Toast.LENGTH_SHORT);
+        if (id == R.id.action_desempenho2) {
+            Toast toast = Toast.makeText(this, "Você! pressionou desempenho 2", Toast.LENGTH_SHORT);
             toast.show();
             Fragment desempenhoFragment = fragmentManager.findFragmentByTag("desempenho");
 
@@ -120,6 +121,20 @@ public class MainActivity extends AppCompatActivity
 
 
             replaceFragment(desempenhoFragment, "desempenho");
+            return true;
+        }
+
+        if (id == R.id.action_desempenho3) {
+            Toast toast = Toast.makeText(this, "Você! pressionou desempenho 3", Toast.LENGTH_SHORT);
+            toast.show();
+            Fragment desempenhoFragment2 = fragmentManager.findFragmentByTag("desempenho2");
+
+            if (desempenhoFragment2 == null) {
+                desempenhoFragment2 = new StatusJogador();
+            }
+
+
+            replaceFragment(desempenhoFragment2, "desempenho2");
             return true;
         }
 

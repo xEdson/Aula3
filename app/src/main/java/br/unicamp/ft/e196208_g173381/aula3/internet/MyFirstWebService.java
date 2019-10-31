@@ -12,8 +12,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
 public class MyFirstWebService extends AsyncTask<String, Void, String> {
@@ -28,39 +26,34 @@ public class MyFirstWebService extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPreExecute() {
-        textView.append("####################### \n ");
-        textView.append("Iniciando ViaCep \n ");
+;
     }
-
     @Override
     protected String doInBackground(String... args) {
+        if (args.length == 0) {
+            return "No Parameter";
+        }
 
-
+        HttpURLConnection httpURLConnection;
         try {
-            HttpURLConnection httpURLConnection;
             URL url = new URL(args[0]);
             httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setReadTimeout(10000);
             httpURLConnection.setConnectTimeout(15000);
             httpURLConnection.setRequestMethod(args[1]);
 
-            if (args.length == 3){
+            if (args.length == 3) {
                 httpURLConnection.addRequestProperty("Content-Type", "application/json");
 
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(httpURLConnection.getOutputStream(), "UTF-8");
-                outputStreamWriter.write(args[2]);
+                if (args[2] != null && !args[2].isEmpty())
+                    outputStreamWriter.write(args[2]);
                 outputStreamWriter.flush();
                 outputStreamWriter.close();
             }
 
-
-
-             /*
-          Lendo a resposta do servidor
-        */
             BufferedReader reader = new BufferedReader(new
                     InputStreamReader(httpURLConnection.getInputStream()));
-
 
             StringBuilder sb = new StringBuilder();
             String line;
@@ -68,15 +61,10 @@ public class MyFirstWebService extends AsyncTask<String, Void, String> {
                 sb.append(line);
             }
             return sb.toString();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-
-        } catch (ProtocolException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.v("Erro", e.getMessage());
+            return "Exception\n" + e.getMessage();
         }
-        return "";
     }
 
     @Override

@@ -12,8 +12,13 @@
         android:title="@string/contato"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_desempenho"
+        android:id="@+id/action_desempenho2"
         android:orderInCategory="100"
-        android:title="Desempenho"
+        android:title="Desempenho Jogo 2"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_desempenho3"
+        android:orderInCategory="100"
+        android:title="Desempenho Jogo 3"
         app:showAsAction="never" />
 </menu>

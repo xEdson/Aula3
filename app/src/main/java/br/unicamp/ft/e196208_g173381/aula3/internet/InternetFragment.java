@@ -43,7 +43,7 @@ public class InternetFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         String url =
-                                "https://projetoandroid-94ff7.firebaseio.com/"+editText.getText().toString() + "/.json";
+                                "https://aula11-ddae5.firebaseio.com/" +editText.getText().toString()  + "/.json";
 
 
                          String comando = spinner.getSelectedItem().toString();

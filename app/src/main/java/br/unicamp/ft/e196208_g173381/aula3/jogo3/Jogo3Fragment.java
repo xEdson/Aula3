@@ -1,4 +1,4 @@
-package br.unicamp.ft.e196208_g173381.aula3;
+package br.unicamp.ft.e196208_g173381.aula3.jogo3;
 
 
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.Collections;
 
-import br.unicamp.ft.e196208_g173381.aula3.internet.MyViaCepAsyncTask;
+import br.unicamp.ft.e196208_g173381.aula3.R;
 
 
 /**
@@ -34,6 +34,7 @@ public class Jogo3Fragment extends Fragment {
     private Button enviar;
     private Button atualizar;
     private MyJogo3AsyncTask myJogo3AsyncTask;
+    private String tipo;
 
 
     public Jogo3Fragment() {
@@ -58,7 +59,6 @@ public class Jogo3Fragment extends Fragment {
         enviar = view.findViewById(R.id.jogo3Enviar);
         atualizar = view.findViewById(R.id.jogo3Atualizar);
         new MyJogo3AsyncTask(this).execute();
-
 
 
         enviar.setOnClickListener(new View.OnClickListener() {
@@ -92,18 +92,21 @@ public class Jogo3Fragment extends Fragment {
             if (selectedRadioButton.getText().toString().equals(responseJogo3.getNome())) {
                 Toast toast = Toast.makeText(view.getContext(), "Acertou Miseravel", Toast.LENGTH_SHORT);
                 toast.show();
+                tipo = "Acertos";
 
 
             } else {
                 Toast toast = Toast.makeText(view.getContext(), "Uh Rapaz, Errou", Toast.LENGTH_SHORT);
                 toast.show();
+                tipo = "Erros";
             }
         }
         atualizar();
+        new MyFirstWebServiceJogo3(responseJogo3.getNome(), tipo).execute();
         radioGroup.clearCheck();
     }
 
-    public void atualizar(){
+    public void atualizar() {
         new MyJogo3AsyncTask(this).execute();
     }
 

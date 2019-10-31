@@ -1,4 +1,4 @@
-package br.unicamp.ft.e196208_g173381.aula3;
+package br.unicamp.ft.e196208_g173381.aula3.jogo3;
 
 import android.os.AsyncTask;
 import android.util.Log;
