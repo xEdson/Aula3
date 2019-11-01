@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
 import br.unicamp.ft.e196208_g173381.aula3.internet.InternetFragment;
 import br.unicamp.ft.e196208_g173381.aula3.jogo3.Jogo3Fragment;
 import br.unicamp.ft.e196208_g173381.aula3.jogo3.StatusJogador;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FragmentManager fragmentManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,7 +162,7 @@ public class MainActivity extends AppCompatActivity
             Toast toast = Toast.makeText(this, "Você! pressionou Alunos", Toast.LENGTH_SHORT);
             toast.show();
             Fragment alunoFragment = new AlunosFragment();
-            replaceFragment(alunoFragment,"alunos");
+            replaceFragment(alunoFragment, "alunos");
 
         } else if (id == R.id.nav_biografias) {
             Toast toast = Toast.makeText(this, "Você! pressionou Biografias", Toast.LENGTH_SHORT);
@@ -181,27 +183,27 @@ public class MainActivity extends AppCompatActivity
             Fragment nameFragment = new NameFragment();
             replaceFragment(nameFragment, "name");
 
-        }else if (id == R.id.jogo3) {
+        } else if (id == R.id.jogo3) {
             Toast toast = Toast.makeText(this, "Você! pressionou jogo 3", Toast.LENGTH_SHORT);
             toast.show();
             Fragment jogo3Fragment = new Jogo3Fragment();
             replaceFragment(jogo3Fragment, "jogo3");
 
-        }  else if (id == R.id.newActivity) {
+        } else if (id == R.id.newActivity) {
             Toast toast = Toast.makeText(this, "Kotlin Activity", Toast.LENGTH_SHORT);
             toast.show();
-            Intent intent = new Intent(this,KotlinActivity.class);
+            Intent intent = new Intent(this, KotlinActivity.class);
             startActivity(intent);
 
 
-        }else if (id == R.id.database) {
+        } else if (id == R.id.database) {
             Toast toast = Toast.makeText(this, "Clicou no banco", Toast.LENGTH_SHORT);
             toast.show();
             Fragment databaseFragment = new DatabaseFragment();
             replaceFragment(databaseFragment, "database");
 
 
-        }else if (id == R.id.internet) {
+        } else if (id == R.id.internet) {
             Toast toast = Toast.makeText(this, "Clicou no internet", Toast.LENGTH_SHORT);
             toast.show();
             Fragment internetFragment = new InternetFragment();
@@ -213,7 +215,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -228,23 +229,23 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.commit();
     }
 
-    public void doSomething(String msg){
+    public void doSomething(String msg) {
 
         System.out.println(msg);
         AutoresFragment autorFragment = (AutoresFragment) fragmentManager.findFragmentByTag("autores");
 
-        if (autorFragment == null){
-            autorFragment =  new AutoresFragment();
+        if (autorFragment == null) {
+            autorFragment = new AutoresFragment();
         }
         autorFragment.setText(msg);
         replaceFragment(autorFragment, "autores");
     }
 
-    public void showBiografia(int position){
+    public void showBiografia(int position) {
 
         BiografiasFragment biografiasFragment = (BiografiasFragment) fragmentManager.findFragmentByTag("biografias");
 
-        if(biografiasFragment == null){
+        if (biografiasFragment == null) {
             biografiasFragment = new BiografiasFragment();
         }
 
@@ -252,7 +253,6 @@ public class MainActivity extends AppCompatActivity
         replaceFragment(biografiasFragment, "biografias");
 
     }
-
 
 
 }

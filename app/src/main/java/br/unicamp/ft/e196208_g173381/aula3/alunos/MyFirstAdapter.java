@@ -1,5 +1,6 @@
 package br.unicamp.ft.e196208_g173381.aula3.alunos;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -56,7 +57,7 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, @SuppressLint("RecyclerView") final int i) {
         final Aluno aluno = alunos.get(i);
         ((MyFirstNewHolder) viewHolder).onBind(aluno);
 
